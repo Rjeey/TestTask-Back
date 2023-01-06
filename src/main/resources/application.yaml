@@ -1,0 +1,33 @@
+#params
+exchange: https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
+spring:
+  profiles:
+    active: development
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/exchange
+    username: user
+    password: password
+  #Liquibase
+  spring:
+  liquibase:
+    change-log: classpath:db/db.changelog-master.yml
+    user: user
+    password: password
+    url: jdbc:postgresql://localhost:5432/exchange
+  # JPA properties
+  jpa:
+    hibernate:
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: true
+demo:
+   jwt:
+     secret: secretKey
+     auth:
+       expire: 6000000
+     refresh:
+       expire: 1200000

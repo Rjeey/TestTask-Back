@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "exchange"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+    networks:
+       - network
+    ports:
+      - "5432:5432"
+networks:
+  network:
+    driver: bridge
